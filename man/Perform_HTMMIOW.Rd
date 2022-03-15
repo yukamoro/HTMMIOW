@@ -9,7 +9,8 @@ Perform_HTMMIOW(
   outcome,
   confounder = NULL,
   mediator,
-  umapcomponents = 2
+  umapcomponents = 2,
+  B = 2000
 )
 }
 \arguments{
@@ -19,9 +20,11 @@ Perform_HTMMIOW(
 
 \item{confounder}{matrix of relavant covariates}
 
-\item{mediator}{matrix of mediator variables}
+\item{mediator}{matrix of integers that represent abundance}
 
 \item{umapcomponents}{number of components for UMAP to reduce to}
+
+\item{B}{number of replicates for hypothesis test}
 }
 \value{
 A list of observed test statistic, p-value, and test statistics under the null hypothesis
