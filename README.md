@@ -16,8 +16,6 @@ library(devtools)
 install_github("yukamoro/HTMMIOW")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
-
 ## Usage
 
 Provide HTMMIOW() with exposure, mediator, and outcome data. The user may specify the number of umap components and permutations for the test.
