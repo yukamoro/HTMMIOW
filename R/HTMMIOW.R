@@ -1,7 +1,9 @@
+
 #' Perform HT-MMIOW
 #'
 #' This function performs HT-MMIOW on user-provided exposure, outcome,
 #' confounder, and mediator data.
+#'
 #'
 #' @param exposure vector of exposure variable
 #' @param outcome vector of outcome variable
@@ -11,6 +13,9 @@
 #' @param B number of replicates for hypothesis test
 #' @return A list of observed test statistic, p-value, and test statistics under the null hypothesis
 #' @export
+#' @importFrom compositions clr
+#' @importFrom umap umap
+#' @importFrom stats prcomp
 #' @examples
 #' Perform_HTMMIOW(exposure = sim_data$sim_exposure,
 #' outcome = sim_data$sim_outcome,

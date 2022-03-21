@@ -8,6 +8,7 @@
 #' @param mediator matrix of mediator variables
 #' @return The indirect effect of multiple mediators
 #' @export
+#' @importFrom stats glm predict
 
 Compute_Mult_Test_Stat = function(exposure, outcome, mediator){
   #Fit exposure on mediators
