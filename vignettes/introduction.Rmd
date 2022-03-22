@@ -1,5 +1,7 @@
 ---
-title: "HT-MMIOW"
+title: "Guide to HT-MMIOW: A Hypothesis Test approach for Microbiome Mediation using Inverse Odds Weighting"
+author: "Yuka Moroishi"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{introduction}
@@ -14,6 +16,68 @@ knitr::opts_chunk$set(
 )
 ```
 
+This is a practical guide to to using HT-MMIOW: A Hypothesis Test approach for Microbiome Mediation using Inverse Odds Weighting. 
+
+
+## Introduction
+
+Mediation analyses quantifies the contribution of the microbiome in the causal path between exposure and disease.
+HT-MMIOW is a hypothesis test that determines the statistical significance of the indirect effect of the microbiome. 
+Briefly, this approach uses centered log-ratio tranformation to account for the compositionality of microbiome data, 
+and then uses singular value decomposition and UMAP to reduce its dimensionality. The resulting components serve as
+mediators in the mediation analysis. We use a mediation analysis technique that utilizes inverse odds ratio 
+weighting to estimate the indirect effect of multiple mediators. We finally employ a permutation test to test the 
+significance of the observed indirect effect. 
+
+
+## Usage
+
+### Installation
+
+You can install the development version of HTMMIOW from [GitHub](https://github.com/) with:
+
+```{r, message=FALSE}
+# install.packages("devtools")
+library(devtools)
+install_github("yukamoro/HTMMIOW")
+```
+
+### Application to simulated data
+
+Let us apply HT-MMIOW to a simulated dataset. This dataset contains dichotomous exposure and dichotomous outcome 
+variables for 300 subjects. The microbiome data contains counts (absolute abundance) for 400 taxa. Of the 400 taxa, 
+10 are true mediators. 
+
 ```{r setup}
 library(HTMMIOW)
+data("sim_data")
 ```
+
+An exposure, outcome, and mediator variables are required to run the `Perform_HTMMIOW` function.
+Covariate data is optional. The user may specify the number of components to include in the mediation model 
+and the number of permutations in the permutation test. Here we specify 2 components and 5000 permutations. 
+
+
+```{r example}
+set.seed(10)
+htmmiow_output = Perform_HTMMIOW(exposure = sim_data$sim_exposure,
+                                 outcome = sim_data$sim_outcome,
+                                 mediator = sim_data$sim_microbiome,
+                                 confounder = NULL,
+                                 umapcomponents = 2,
+                                 B = 5000)
+
+```
+
+The outcome consists of three components: 
+
+1) tk: The estimated indirect effect, i.e. the observed test statistic for the permutation test
+2) pk_2: The p-value of the permutation test
+3) perm_null: Statistics estimated under the null hypothesis
+
+In our simulated data example, the p-value is `r htmmiow_output$pk_2`, so we reject the null hypothesis and 
+conclude that the microbiome is in fact a mediator in the causal path between exposure and outcome. 
+
+
+
+

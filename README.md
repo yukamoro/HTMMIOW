@@ -4,7 +4,7 @@
 
 <!-- badges: start -->
 <!-- badges: end -->
-HT-MMIOW is a hypothesis test approach for microbiome mediation using inverse odds ratio. This approach uses singular value decomposition and UMAP to reduce the dimensions of microbiome data and quantifies the indirect effect of multiple mediators using inverse odds weighting. We employ a permutation test to test if an indirect effect exists.
+HT-MMIOW is a hypothesis test approach for microbiome mediation that uses inverse odds ratio weighting. In short, this approach uses singular value decomposition and UMAP to reduce the dimensions of microbiome data and quantifies the indirect effect of multiple mediators using inverse odds weighting. We employ a permutation test to test if an indirect effect exists.
 
 ## Installation
 
@@ -18,7 +18,7 @@ install_github("yukamoro/HTMMIOW")
 
 ## Usage
 
-Provide HTMMIOW() with exposure, mediator, and outcome data. The user may specify the number of umap components and permutations for the test.
+Provide `Perform_HTMMIOW` with exposure, mediator, and outcome data. The user may specify the number of umap components and permutations for the test.
 
 ``` r
 library(HTMMIOW)
@@ -35,8 +35,12 @@ htmmiow_output$pk_2
 #> [1] 0
 ```
 
-Here, the p-value is 0, so we conlude that the microbiome is a mediator in the causal path between exposure and outcome.
+Here, the p-value is 0, so we conlude that the microbiome is a mediator in the causal path between exposure and outcome. Further information can be found in the vignette and corresponding manuscript.
 
-## References
+## Issues
+
+Please report any issues [here](https://github.com/yukamoro/HTMMIOW/issues).
+
+## Reference
 
 Manuscript for HT-MMIOW available soon.
