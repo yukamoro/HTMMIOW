@@ -21,13 +21,12 @@ This is a practical guide to to using HT-MMIOW: A Hypothesis Test approach for M
 
 ## Introduction
 
-Mediation analyses quantifies the contribution of the microbiome in the causal path between exposure and disease.
+Mediation analyses quantifies the contribution of the microbiome in the "causal"" path between exposure and disease.
 HT-MMIOW is a hypothesis test that determines the statistical significance of the indirect effect of the microbiome. 
-Briefly, this approach uses centered log-ratio tranformation to account for the compositionality of microbiome data, 
-and then uses singular value decomposition and UMAP to reduce its dimensionality. The resulting components serve as
-mediators in the mediation analysis. We use a mediation analysis technique that utilizes inverse odds ratio 
-weighting to estimate the indirect effect of multiple mediators. We finally employ a permutation test to test the 
-significance of the observed indirect effect. 
+Briefly, this approach uses isometric log-ratio tranformation to account for the compositionality of microbiome data, 
+and then uses UMAP to reduce its dimensionality. The resulting components serve as mediators in the mediation analysis. 
+We use a mediation analysis technique that utilizes inverse odds ratio weighting to estimate the indirect effect of
+multiple mediators. We finally employ a permutation test to test the significance of the observed indirect effect. 
 
 
 ## Usage
